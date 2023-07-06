@@ -18,6 +18,7 @@ cmdProgramFilePath := ""
 visualStudio22ProgramFilePath := ""
 visualStudio19ProgramFilePath := ""
 visualStudio17ProgramFilePath := ""
+spotifyFilePath := ""
 
 hostsFilepath := ""
 
@@ -28,5 +29,6 @@ myKeysCoreFilePath := ""
 myAllDesktopKeysFilePath := ""
 myCurrentDesktopKeysFilePath := ""
 myLocalSystemVariablesFilePath := ""
+myOfficeMailID := ""
 
 NotionWorkLogTodayPage := ""
