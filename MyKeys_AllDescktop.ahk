@@ -63,7 +63,7 @@ DetectHiddenWindows(True)
 <^>!h:: ;Help Window
 {
     parameter := Format('{1} /c ""lprun6" "{2}""', cmdProgramFilePath, ahkHelpWindowProgramPath)
-    RunProgram(parameter, "min")
+    RunProgram(parameter, "-")
 }
 
 <^>!i:: ;Initalize Startup Programs
@@ -86,8 +86,8 @@ DetectHiddenWindows(True)
     switch pressedKey
     {
         case "l": RunProgram(NotionWorkLogTodayPage)
-        case "K":
-            if(WinActive("msedge.exe"))
+        case "k":
+            if(WinActive("ahk_exe msedge.exe"))
             {
                 Send("{F4}")
                 Send("^c")

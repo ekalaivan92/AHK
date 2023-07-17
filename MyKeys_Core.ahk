@@ -11,19 +11,25 @@ RunProgramOrActivate(exeName, exePath, createNew := False, windowType := "Max")
 RunProgram(exePath, windowType := "Max")
 {
     if (windowType = "-")
-        Run(exePath)
+        Run(exePath,,, &OutputVarPID)
     else
-        Run(exePath,, windowType)
+    {
+        Run(exePath,, windowType, &OutputVarPID)
+
+        ahkProcessIDName := Format("ahk_pid {1}", OutputVarPID)
+
+        if(WinWait(ahkProcessIDName, , 3))
+        {
+            #WinActivateForce
+            WinActivate(ahkProcessIDName)
+        }
+    }
 }
 
 RunProgramWithParameter(exePath, parameter, windowType := "Max")
 {
     pathToExecute := Format('{1} "{2}"', exePath, parameter)
-    
-    if (windowType = "-")
-        Run(pathToExecute)
-    else
-        Run(pathToExecute,, windowType)
+    RunProgram(pathToExecute, windowType)
 }
 
 RunSelected(programFilePath, windowType := "Max")
