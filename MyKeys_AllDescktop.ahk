@@ -137,8 +137,8 @@ DetectHiddenWindows(True)
 
 <^>!r:: ;Rebuild My AHK Keys
 {
-    RunProgram(myAllDesktopKeysFilePath, "-")
-    RunProgram(myCurrentDesktopKeysFilePath, "-")
+    RunProgram(myAllDesktopKeysFilePath, "Min")
+    RunProgram(myCurrentDesktopKeysFilePath, "Min")
 }
 
 <^>!s:: ;Spotify

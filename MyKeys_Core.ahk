@@ -2,7 +2,7 @@ RunProgramOrActivate(exeName, exePath, createNew := False, windowType := "Max")
 {
     ahkEXEName := Format("ahk_exe {1}", exeName)
 
-    if(createNew = True or WinExist(ahkEXEName) == False)
+    if(createNew == True or WinExist(ahkEXEName) == False)
         RunProgram(exePath, windowType)
     else 
         CycleProgram(exeName)
@@ -10,20 +10,7 @@ RunProgramOrActivate(exeName, exePath, createNew := False, windowType := "Max")
 
 RunProgram(exePath, windowType := "Max")
 {
-    if (windowType = "-")
-        Run(exePath,,, &OutputVarPID)
-    else
-    {
-        Run(exePath,, windowType, &OutputVarPID)
-
-        ahkProcessIDName := Format("ahk_pid {1}", OutputVarPID)
-
-        if(WinWait(ahkProcessIDName, , 3))
-        {
-            #WinActivateForce
-            WinActivate(ahkProcessIDName)
-        }
-    }
+    Run(exePath,,windowType, &OutputVarPID)
 }
 
 RunProgramWithParameter(exePath, parameter, windowType := "Max")
