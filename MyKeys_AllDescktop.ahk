@@ -20,7 +20,6 @@ DetectHiddenWindows(True)
     send(myOfficeMailID)
 }
 
-
 <^>!c:: ;C--VSCode | A--Edit AHK files | H--Edit Host file | S--Edit SSH Config File | D--DrawIO | E--Excalidraw | N--New Instance
 {
     pressedKey := DoInputHook("T1 L1", "a,d,h,e,n,s", "c")

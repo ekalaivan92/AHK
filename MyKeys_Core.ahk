@@ -3,14 +3,20 @@ RunProgramOrActivate(exeName, exePath, createNew := False, windowType := "Max")
     ahkEXEName := Format("ahk_exe {1}", exeName)
 
     if(createNew == True or WinExist(ahkEXEName) == False)
-        RunProgram(exePath, windowType)
+        RunProgram(exePath, windowType, ahkEXEName)
     else 
         CycleProgram(exeName)
 }
 
-RunProgram(exePath, windowType := "Max")
+RunProgram(exePath, windowType := "Max", ahkEXEName:= "")
 {
     Run(exePath,,windowType, &OutputVarPID)
+
+    If(ahkEXEName != "" and WinWait(ahkEXEName, , , 0) and not WinActive(ahkEXEName))
+    {
+        #WinActivateForce
+        WinActivate(ahkEXEName)
+    }
 }
 
 RunProgramWithParameter(exePath, parameter, windowType := "Max")
