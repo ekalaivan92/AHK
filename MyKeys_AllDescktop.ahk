@@ -15,7 +15,7 @@ DetectHiddenWindows(True)
     send("{left 4}")
 }
 
-:*:,mail:: ;database migration file name
+:*:,mail:: ;office mail id
 {
     send(myOfficeMailID)
 }
@@ -62,7 +62,7 @@ DetectHiddenWindows(True)
 <^>!h:: ;Help Window
 {
     parameter := Format('{1} /c ""lprun6" "{2}""', cmdProgramFilePath, ahkHelpWindowProgramPath)
-    RunProgram(parameter, "-")
+    RunProgram(parameter, "Min")
 }
 
 <^>!i:: ;Initalize Startup Programs
@@ -145,7 +145,6 @@ DetectHiddenWindows(True)
     RunProgramOrActivate("Spotify.exe", spotifyFilePath)
 }
 
-
 <^>!u:: ;WSL Ubuntu
 {
     RunProgramOrActivate("WindowsTerminal.exe", wslUbuntuProgramFilePath)
@@ -164,6 +163,11 @@ DetectHiddenWindows(True)
 #2:: ;Open With VS22
 {
     RunSelected(visualStudio22ProgramFilePath)
+}
+
+#3:: ;Open With Sublime
+{
+    RunSelected(sublimeTextProgramFilePath)
 }
 
 #9:: ;Open With VS19

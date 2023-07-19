@@ -39,7 +39,7 @@ RunSelected(programFilePath, windowType := "Max")
         Sleep(100)
         RunProgramWithParameter(programFilePath, A_Clipboard, windowType)
     }
-    Else If WinActive("ahk_exe Explorer.EXE")
+    Else If WinActive("ahk_class CabinetWClass")
     {
         Send("^+c")
         Sleep(100)
