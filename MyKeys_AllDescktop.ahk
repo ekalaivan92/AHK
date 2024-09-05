@@ -138,15 +138,9 @@ DetectHiddenWindows(True)
     RunProgramOrActivate(sublimeMergeProgramFilePath, "sublime_merge.exe", IsNewWindowCall())
 }
 
-<^>!n:: ;n--Notepad | s--Sublime Text | N N--New NotePad | S N--new Sublime Text
+<^>!n:: ;Notepad
 {
-    pressedKey := DoInputHook("T1 L1", "n,s", "n")
-
-    switch pressedKey
-    {
-        case "s": RunProgramOrActivate(sublimeTextProgramFilePath, "sublime_text.exe", IsNewWindowCall())
-        default: RunProgramOrActivate(notepadProgramFilePath, "Notepad.exe", IsNewWindowCall())
-    }
+    RunProgramOrActivate(notepadProgramFilePath, "Notepad.exe", IsNewWindowCall())
 }
 
 <^>!r:: ;Rebuild My AHK Keys
@@ -155,9 +149,9 @@ DetectHiddenWindows(True)
     RunProgram(myCurrentDesktopKeysFilePath, "", "Min")
 }
 
-<^>!s:: ;Spotify
+<^>!s:: ;Sublime Text
 {
-    RunProgramOrActivate(spotifyFilePath, "Spotify.exe")
+    RunProgramOrActivate(sublimeTextProgramFilePath, "sublime_text.exe", IsNewWindowCall())
 }
 
 <^>!u:: ;WSL Ubuntu
