@@ -8,7 +8,7 @@ DetectHiddenWindows(True)
 #include MyKeys_localPathVariables.ahk
 #include MyKeys_Core.ahk 
 
-:*:,dbm:: ;database migration file name
+:*:,mig:: ;database migration file name
 {
     item := FormatTime(, "yyyyMMddHHmm")
     send("V" . item . "__.sql")
@@ -18,6 +18,32 @@ DetectHiddenWindows(True)
 :*:,mail:: ;office mail id
 {
     send(myOfficeMailID)
+}
+
+:*:,dwr:: ;Dotnet watch run
+{
+    send("dotnet watch run")
+}
+
+:*:,dr:: ;Dotnet watch run
+{
+    send("dotnet run")
+}
+
+:*:,db:: ;Dotnet watch run
+{
+    send("dotnet build")
+}
+
+
+:*:,cr:: ;Dotnet watch run
+{
+    send("caddy run")
+}
+
+:*:,dc:: ;Dotnet watch run
+{
+    send("dotnet clean")
 }
 
 <^>!c:: ;C--VSCode | A--Edit AHK files | H--Edit Host file | S--Edit SSH Config File | D--DrawIO | E--Excalidraw | N--New Instance

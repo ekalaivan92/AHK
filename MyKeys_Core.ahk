@@ -19,10 +19,11 @@ RunProgram(exePath, windowType := "Max", ahkEXEName:= "")
     }
 }
 
-RunProgramWithParameter(exePath, parameter, windowType := "Max")
+RunProgramWithParameter(exePath, parameter, windowType := "Max", exeName:= "")
 {
+    ahkEXEName := Format("ahk_exe {1}", exeName)
     pathToExecute := Format('{1} "{2}"', exePath, parameter)
-    RunProgram(pathToExecute, windowType)
+    RunProgram(pathToExecute, windowType, ahkEXEName)
 }
 
 RunSelected(programFilePath, windowType := "Max")

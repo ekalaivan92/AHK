@@ -21,7 +21,7 @@ DetectHiddenWindows(False)
 
 <^>!t:: ;Teams
 {
-    RunProgramOrActivate("teams.exe", teamsProgramFilePath)
+    RunProgramOrActivate("ms-teams.exe", teamsProgramFilePath)
 }
 
 <^>!w:: ;Thunderbird
@@ -31,5 +31,5 @@ DetectHiddenWindows(False)
 
 <^>!f:: ;Terminal
 {
-    RunProgram("wt")
+    RunProgramWithParameter("wt", "wt", "WindowsTerminal.exe")
 }
