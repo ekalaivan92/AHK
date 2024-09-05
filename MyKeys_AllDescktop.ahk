@@ -45,7 +45,7 @@ DetectHiddenWindows(True)
     send("dotnet clean")
 }
 
-<^>!c:: ;C--VSCode | A--Edit AHK files | H--Edit Host file | S--Edit SSH Config File | D--DrawIO | E--Excalidraw | N--New Instance
+<^>!c:: ;--VSCode | A--Edit AHK files | H--Edit Host file | S--Edit SSH Config File | D--DrawIO | E--Excalidraw | N--New Instance
 {
     pressedKey := DoInputHook("T1 L1", "a,d,h,e,n,s", "c")
 
@@ -69,7 +69,7 @@ DetectHiddenWindows(True)
     RunProgramOrActivate(dbeaverProgramFilePath, "dbeaver.exe")
 }
 
-<^>!g:: ;(1-9)--Localhost URL | w--whatsapp
+<^>!g:: ;--LocalHost:5000 | (1to9)--Localhost:500x URL | w--whatsapp
 {
     pressedKey := DoInputHook("T1 L1", "0,1,2,3,4,5,6,7,8,9,w", "0")
 
@@ -103,7 +103,7 @@ DetectHiddenWindows(True)
     RunProgramOrActivate(jmeeterProgramFilePath, "javaw.exe", IsNewWindowCall())
 }
 
-<^>!k:: ;k--notion | l--work log
+<^>!k:: ;--notion | l--work log
 {
     pressedKey := DoInputHook("T1 L1", "k,l", "k")
 
