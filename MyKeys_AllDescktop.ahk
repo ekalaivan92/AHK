@@ -85,8 +85,8 @@ DetectHiddenWindows(True)
 
 <^>!h:: ;Help Window
 {
-    parameter := Format('{1} /c ""lprun6" "{2}""', cmdProgramFilePath, ahkHelpWindowProgramPath)
-    RunProgram(parameter, "", "Min")
+    ; parameter := Format('{1} /c ""lprun6" "{2}""', cmdProgramFilePath, ahkHelpWindowProgramPath)
+    RunProgram("./AHKHelpWindow.exe", "", "")
 }
 
 <^>!i:: ;Initalize Startup Programs
