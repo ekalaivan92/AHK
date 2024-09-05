@@ -1,31 +1,40 @@
-RunProgramOrActivate(exeName, exePath, createNew := False, windowType := "Max")
-{
-    ahkEXEName := Format("ahk_exe {1}", exeName)
-
-    if(createNew == True or WinExist(ahkEXEName) == False)
-        RunProgram(exePath, windowType, ahkEXEName)
-    else 
-        CycleProgram(exeName)
-}
-
-RunProgram(exePath, windowType := "Max", ahkEXEName:= "")
+RunProgram(exePath, exeName:= "", windowType := "Max")
 {
     Run(exePath,,windowType, &OutputVarPID)
 
-    If(ahkEXEName != "" and WinWait(ahkEXEName, , , 0) and not WinActive(ahkEXEName))
+    ahkEXEName := exeName == "" ? 
+                    Format("ahk_pid {1}", OutputVarPID) : 
+                    ahkEXEName := Format("ahk_exe {1}", exeName)
+
+    If(WinWait(ahkEXEName, , 3) and not WinActive(ahkEXEName))
     {
         #WinActivateForce
         WinActivate(ahkEXEName)
     }
 }
 
-RunProgramWithParameter(exePath, parameter, windowType := "Max", exeName:= "")
+RunProgramOrActivate(exePath, exeName, createNew := False, windowType := "Max")
 {
     ahkEXEName := Format("ahk_exe {1}", exeName)
-    pathToExecute := Format('{1} "{2}"', exePath, parameter)
-    RunProgram(pathToExecute, windowType, ahkEXEName)
+
+    if(exeName == "" or createNew or not WinExist(ahkEXEName))
+        RunProgram(exePath, ahkEXEName, windowType)
+    else
+        CycleProgram(exeName)
 }
 
+;It is difficult to find the running program with the parameter
+;so we can't find existing running program for this call
+;Because of it this call will result in always running new program
+RunProgramWithParameter(exePath, parameter, windowType := "Max")
+{
+    pathToExecute := Format('{1} "{2}"', exePath, parameter)
+    RunProgram(pathToExecute, "", windowType)
+}
+
+;It is difficult to find the running program with the parameter
+;so we can't find existing running program for this call
+;Because of it this call will result in always running new program
 RunSelected(programFilePath, windowType := "Max")
 {
     If WinActive("ahk_class keypirinha_wndcls_run")
@@ -48,16 +57,15 @@ RunSelected(programFilePath, windowType := "Max")
         RunProgramWithParameter(programFilePath, A_Clipboard, windowType)
     }
     else
-    {
-        RunProgram(programFilePath, windowType)
-    }
+        RunProgram(programFilePath, "", windowType)
 }
 
 CycleProgram(exeName)
 {
     ahkEXEName := Format("ahk_exe {1}", exeName)
+
     If WinActive(ahkEXEName)
-    {   
+    { 
         #WinActivateForce
         WinActivateBottom(ahkEXEName)
     }
@@ -69,7 +77,7 @@ CycleProgram(exeName)
 DoInputHook(options, matchList, defaultKey, endKeys := "{enter}.{esc}{tab}")
 {
     ih := InputHook(options, endKeys, matchList)
-    
+
     ih.start()
     ih.wait()
 
@@ -82,6 +90,5 @@ DoInputHook(options, matchList, defaultKey, endKeys := "{enter}.{esc}{tab}")
 IsNewWindowCall(newWindowKey := "n")
 {
     pressedKey := DoInputHook("T1 L1", newWindowKey, "")
-
     return pressedKey == newWindowKey
 }

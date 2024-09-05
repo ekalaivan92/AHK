@@ -16,20 +16,20 @@ DetectHiddenWindows(False)
 
 <^>!e:: ;Edge
 {
-    RunProgramOrActivate("msedge.exe", edgeProgramFilePath, IsNewWindowCall())
+    RunProgramOrActivate(edgeProgramFilePath, "msedge.exe", IsNewWindowCall())
 }
 
 <^>!t:: ;Teams
 {
-    RunProgramOrActivate("ms-teams.exe", teamsProgramFilePath)
+    RunProgramOrActivate(teamsProgramFilePath, "ms-teams.exe")
 }
 
 <^>!w:: ;Thunderbird
 {
-    RunProgramOrActivate("thunderbird.exe", thunderbirdProgramFilePath)
+    RunProgramOrActivate(thunderbirdProgramFilePath, "thunderbird.exe")
 }
 
 <^>!f:: ;Terminal
 {
-    RunProgramWithParameter("wt", "wt", "WindowsTerminal.exe")
+    RunProgramOrActivate("wt", "WindowsTerminal.exe", IsNewWindowCall())
 }

@@ -52,7 +52,7 @@ DetectHiddenWindows(True)
 
     switch pressedKey
     {
-        case "c", "n": RunProgramOrActivate("Code.exe", vsCodeProgramFilePath, pressedKey == "n")
+        case "c", "n": RunProgramOrActivate(vsCodeProgramFilePath, "Code.exe", pressedKey == "n")
         case "h": RunProgramWithParameter(vsCodeProgramFilePath, hostsFilepath)
         case "e": RunProgramWithParameter(vsCodeProgramFilePath, myExcalidrawFilePath)
         case "s": RunProgramWithParameter(vsCodeProgramFilePath, mySSHConfigFilePath)
@@ -67,7 +67,7 @@ DetectHiddenWindows(True)
 
 <^>!d:: ;DBEaver
 {
-    RunProgramOrActivate("dbeaver.exe", dbeaverProgramFilePath)
+    RunProgramOrActivate(dbeaverProgramFilePath, "dbeaver.exe")
 }
 
 <^>!g:: ;(1-9)--Localhost URL | w--whatsapp
@@ -88,20 +88,21 @@ DetectHiddenWindows(True)
 <^>!h:: ;Help Window
 {
     parameter := Format('{1} /c ""lprun6" "{2}""', cmdProgramFilePath, ahkHelpWindowProgramPath)
-    RunProgram(parameter, "Min")
+    RunProgram(parameter, "", "Min")
 }
 
 <^>!i:: ;Initalize Startup Programs
 {
-    RunProgramOrActivate("thunderbird.exe", thunderbirdProgramFilePath)
-    RunProgramOrActivate("sublime_merge.exe", sublimeMergeProgramFilePath)
-    RunProgramOrActivate("dbeaver.exe", dbeaverProgramFilePath)
-    RunProgramOrActivate("Notion.exe", notionProgramFilePath)
+    RunProgramOrActivate(thunderbirdProgramFilePath, "thunderbird.exe")
+    RunProgramOrActivate(sublimeMergeProgramFilePath, "sublime_merge.exe")
+    RunProgramOrActivate(dbeaverProgramFilePath, "dbeaver.exe")
+    RunProgramOrActivate(notionProgramFilePath, "Notion.exe")
+    RunProgramWithParameter(edgeProgramFilePath, TeamsStandUpChannelLink)
 }
 
 <^>!j:: ;Jmeeter
 {
-    RunProgramOrActivate("javaw.exe", jmeeterProgramFilePath, IsNewWindowCall())
+    RunProgramOrActivate(jmeeterProgramFilePath, "javaw.exe", IsNewWindowCall())
 }
 
 <^>!k:: ;k--notion | l--work log
@@ -122,7 +123,7 @@ DetectHiddenWindows(True)
             }
             else
             {
-                RunProgramOrActivate("Notion.exe", notionProgramFilePath)
+                RunProgramOrActivate(notionProgramFilePath, "Notion.exe")
             }
     }
     
@@ -131,12 +132,12 @@ DetectHiddenWindows(True)
 
 <^>!l:: ;Linqpad 6
 { 
-    RunProgramOrActivate("LINQPad6.exe",  linqPad6ProgramFilePath, IsNewWindowCall())
+    RunProgramOrActivate(linqPad6ProgramFilePath, "LINQPad6.exe", IsNewWindowCall())
 }
 
 <^>!m:: ;Sublime Merge
 {
-    RunProgramOrActivate("sublime_merge.exe", sublimeMergeProgramFilePath, IsNewWindowCall())
+    RunProgramOrActivate(sublimeMergeProgramFilePath, "sublime_merge.exe", IsNewWindowCall())
 }
 
 <^>!n:: ;n--Notepad | s--Sublime Text | N N--New NotePad | S N--new Sublime Text
@@ -145,35 +146,25 @@ DetectHiddenWindows(True)
 
     switch pressedKey
     {
-        case "s": RunProgramOrActivate("sublime_text.exe", sublimeTextProgramFilePath, IsNewWindowCall())
-        default: RunProgramOrActivate("Notepad.exe", notepadProgramFilePath, IsNewWindowCall())
+        case "s": RunProgramOrActivate(sublimeTextProgramFilePath, "sublime_text.exe", IsNewWindowCall())
+        default: RunProgramOrActivate(notepadProgramFilePath, "Notepad.exe", IsNewWindowCall())
     }
-}
-
-<^>!o:: ;Obsidian
-{
-    RunProgramOrActivate("Obsidian.exe", obsidianProgramFilePath)
-}
-
-<^>!p:: ;Postman
-{
-    RunProgramOrActivate("Postman.exe", postmanProgramFilePath, IsNewWindowCall())
 }
 
 <^>!r:: ;Rebuild My AHK Keys
 {
-    RunProgram(myAllDesktopKeysFilePath, "Min")
-    RunProgram(myCurrentDesktopKeysFilePath, "Min")
+    RunProgram(myAllDesktopKeysFilePath, "", "Min")
+    RunProgram(myCurrentDesktopKeysFilePath, "", "Min")
 }
 
 <^>!s:: ;Spotify
 {
-    RunProgramOrActivate("Spotify.exe", spotifyFilePath)
+    RunProgramOrActivate(spotifyFilePath, "Spotify.exe")
 }
 
 <^>!u:: ;WSL Ubuntu
 {
-    RunProgramOrActivate("WindowsTerminal.exe", wslUbuntuProgramFilePath)
+    RunProgramOrActivate(wslUbuntuProgramFilePath, "WindowsTerminal.exe", true)
 }
 
 #`:: ;Open With Notepad
