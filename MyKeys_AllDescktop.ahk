@@ -25,24 +25,24 @@ DetectHiddenWindows(True)
     send("dotnet watch run")
 }
 
-:*:,dr:: ;Dotnet watch run
+:*:,dr:: ;Dotnet run
 {
     send("dotnet run")
 }
 
-:*:,db:: ;Dotnet watch run
+:*:,db:: ;dotnet build
 {
     send("dotnet build")
 }
 
-:*:,cr:: ;Dotnet watch run
-{
-    send("caddy run")
-}
-
-:*:,dc:: ;Dotnet watch run
+:*:,dc:: ;dotnet clean
 {
     send("dotnet clean")
+}
+
+:*:,cr:: ;caddy run
+{
+    send("caddy run")
 }
 
 <^>!c:: ;--VSCode | A--Edit AHK files | H--Edit Host file | S--Edit SSH Config File | D--DrawIO | E--Excalidraw | N--New Instance
