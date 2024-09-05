@@ -35,7 +35,6 @@ DetectHiddenWindows(True)
     send("dotnet build")
 }
 
-
 :*:,cr:: ;Dotnet watch run
 {
     send("caddy run")
@@ -72,13 +71,12 @@ DetectHiddenWindows(True)
 
 <^>!g:: ;(1-9)--Localhost URL | w--whatsapp
 {
-    pressedKey := DoInputHook("T1 L1", "0,1,2,3,4,5,6,7,8,9,w,h,m,l,k", "0")
+    pressedKey := DoInputHook("T1 L1", "0,1,2,3,4,5,6,7,8,9,w", "0")
 
     endpoint := ""
     switch pressedKey
     {
         case "w": endpoint := "https://web.whatsapp.com/"
-        case "h": endpoint := "http://localhost:5000/health"
         default:  endpoint := "http://localhost:500" . pressedKey . "/"
     }
 
